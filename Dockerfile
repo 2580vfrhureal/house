@@ -36,7 +36,3 @@ FROM nginx:alpine
 # Copy the build output to the Nginx html directory
 COPY --from=build /app/dist/browser /usr/share/nginx/html
 
-
-# Add a health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:80 || exit 1
